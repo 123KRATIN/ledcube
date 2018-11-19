@@ -1,0 +1,114 @@
+
+void setup()
+{
+  for (int i=0; i<20; i++)
+  {
+    pinMode(i, OUTPUT);
+  }
+}
+
+void loop()
+{
+all(100);
+}
+
+void LED_ON( int LED)
+{
+  int level;
+  int pin;
+  
+  //Levels
+  if (LED>=0 && LED<=16)       {level=16;}
+  else if (LED>16 && LED<=32)  {level=17;}
+  else if (LED>32 && LED<=48)  {level=18;}
+  else if (LED>48 && LED<=64)  {level=19;}
+  
+  //LED on each level
+  if (LED==1 || LED%16==1){pin=0;}
+  else if (LED==2 || LED%16==2)    {pin=1;}
+  else if (LED==3 || LED%16==3)    {pin=2;}
+  else if (LED==4 || LED%16==4)    {pin=3;}
+  else if (LED==5 || LED%16==5)    {pin=4;}
+  else if (LED==6 || LED%16==6)    {pin=5;}
+  else if (LED==7 || LED%16==7)    {pin=6;}
+  else if (LED==8 || LED%16==8)    {pin=7;}
+  else if (LED==9 || LED%16==9)    {pin=8;}
+  else if (LED==10 || LED%16==10)  {pin=9;}
+  else if (LED==11 || LED%16==11)  {pin=10;}
+  else if (LED==12 || LED%16==12)  {pin=11;}
+  else if (LED==13 || LED%16==13)  {pin=13;}  //Mixed up wiring these two
+  else if (LED==14 || LED%16==14)  {pin=12;}  //Mixed up wiring these two
+  else if (LED==15 || LED%16==15)  {pin=14;}
+  else if (LED==16 || LED%16==0)   {pin=15;}
+  
+  digitalWrite(pin, HIGH);
+  digitalWrite(level, HIGH);
+}
+
+void LED_OFF( int LED)
+{
+  int level;
+  int pin;
+  
+  //Levels
+  if (LED>=0 && LED<=16)       {level=16;}
+  else if (LED>16 && LED<=32)  {level=17;}
+  else if (LED>32 && LED<=48)  {level=18;}
+  else if (LED>48 && LED<=64)  {level=19;}
+  
+  //LED on each level
+  if (LED==1 || LED%16==1){pin=0;}
+  else if (LED==2 || LED%16==2)    {pin=1;}
+  else if (LED==3 || LED%16==3)    {pin=2;}
+  else if (LED==4 || LED%16==4)    {pin=3;}
+  else if (LED==5 || LED%16==5)    {pin=4;}
+  else if (LED==6 || LED%16==6)    {pin=5;}
+  else if (LED==7 || LED%16==7)    {pin=6;}
+  else if (LED==8 || LED%16==8)    {pin=7;}
+  else if (LED==9 || LED%16==9)    {pin=8;}
+  else if (LED==10 || LED%16==10)  {pin=9;}
+  else if (LED==11 || LED%16==11)  {pin=10;}
+  else if (LED==12 || LED%16==12)  {pin=11;}
+  else if (LED==13 || LED%16==13)  {pin=13;}  //Mixed up wiring these two
+  else if (LED==14 || LED%16==14)  {pin=12;}  //Mixed up wiring these two
+  else if (LED==15 || LED%16==15)  {pin=14;}
+  else if (LED==16 || LED%16==0)   {pin=15;}
+  
+  
+  digitalWrite(pin, LOW);
+  digitalWrite(level, LOW);
+}
+void all(int r)
+{
+  //create array
+int led[64];
+int i=0;
+for(i=0; i<64; i++)
+{
+   int j=1;
+   led[i]=j;
+   j++;   
+}
+for(i=0; i<r; i++)
+{
+  for(i=0; i<16; i++){LED_ON(led[i]);}
+  delay(2);
+  for(i=0; i<16; i++){LED_OFF(led[i]);}
+  delay(1);
+  
+  for(i=16; i<32; i++){LED_ON(led[i]);}
+  delay(2);
+  for(i=16; i<32; i++){LED_OFF(led[i]);}
+  delay(1);
+
+  for(i=32; i<48; i++){LED_ON(led[i]);}
+  delay(2);
+  for(i=32; i<48; i++){LED_OFF(led[i]);}
+  delay(1);
+
+  for(i=48; i<64; i++){LED_ON(led[i]);}
+  delay(2);
+  for(i=48; i<64; i++){LED_OFF(led[i]);}
+  delay(1);
+}
+}
